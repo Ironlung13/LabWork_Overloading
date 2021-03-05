@@ -21,7 +21,7 @@ namespace LabWork_Overloading
         public Vector3D((double x, double y, double z) end, (double x0, double y0, double z0) start) : this(end, start.x0, start.y0, start.z0) { }
         public override string ToString()
         {
-            return $"Vector base point: [X: {Start.X0}, Y: {Start.Y0}, Z: {Start.Z0}].\nVector end point: [X: {End.X}, Y: {End.Y}, Z: {End.Z}].";
+            return $"Vector base point: [X:{Start.X0,6:F2}, Y:{Start.Y0,6:F2}, Z:{Start.Z0,6:F2}].\nVector end point:  [X:{End.X,6:F2}, Y:{End.Y,6:F2}, Z:{End.Z,6:F2}].";
         }
         public static Vector3D Sum(Vector3D a, Vector3D b)
         {
@@ -31,9 +31,30 @@ namespace LabWork_Overloading
                                      a.End.Y + b.End.Y,
                                      a.End.Z + b.End.Z), a.Start);
             }
-            catch (Exception)
+            catch (OverflowException)
             {
-                throw new ArgumentException("Encountered problem with one of the vectors.");
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
+        }
+        public static Vector3D Sum(Vector3D a, (double x, double y, double z) values)
+        {
+            try
+            {
+                return new Vector3D((a.End.X + values.x,
+                                     a.End.Y + values.y,
+                                     a.End.Z + values.z), a.Start);
+            }
+            catch (OverflowException)
+            {
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
             }
         }
         public static Vector3D Subtract(Vector3D a, Vector3D b)
@@ -44,9 +65,13 @@ namespace LabWork_Overloading
                                      a.End.Y - b.End.Y,
                                      a.End.Z - b.End.Z), a.Start);
             }
-            catch (Exception)
+            catch (OverflowException)
             {
-                throw new ArgumentException("Encountered problem with one of the vectors.");
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
             }
         }
         public static Vector3D Subtract(Vector3D a, (double x, double y, double z) values)
@@ -68,9 +93,20 @@ namespace LabWork_Overloading
         }
         public static Vector3D Multiply(Vector3D a, double number)
         {
-            return new Vector3D((a.End.X * number, 
-                                 a.End.Y * number, 
-                                 a.End.Z * number), a.Start);
+            try
+            {
+                return new Vector3D((a.End.X * number,
+                                     a.End.Y * number,
+                                     a.End.Z * number), a.Start);
+            }
+            catch (OverflowException)
+            {
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
         }
         public static Vector3D Multiply(Vector3D a, Vector3D b)
         {
@@ -82,6 +118,10 @@ namespace LabWork_Overloading
         public static Vector3D operator+(Vector3D a, Vector3D b)
         {
             return Sum(a, b);
+        }
+        public static Vector3D operator+(Vector3D a, (double x, double y, double z) values)
+        {
+            return Sum(a, values);
         }
         public static Vector3D operator-(Vector3D a, Vector3D b)
         {
