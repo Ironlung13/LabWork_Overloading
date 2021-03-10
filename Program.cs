@@ -8,13 +8,40 @@ namespace LabWork_Overloading
         {
             Vector3D a = EnterVector3DInfo();
             Vector3D b = EnterVector3DInfo();
+            
+            DisplayVector3D(a, nameof(a));
+            DisplayVector3D(b, nameof(b));
 
-            DisplayVector3D(a);
-            DisplayVector3D(b);
+            //Summing vectors
+            Vector3D sum1 = a + b;
+            Vector3D sum2 = Vector3D.Sum(a, b);
+            Vector3D sum3 = Vector3D.Sum(a, (20d, 20d, -31.123d));
+            DisplayVector3D(sum1, nameof(sum1));
+            DisplayVector3D(sum2, nameof(sum2));
+            DisplayVector3D(sum2, nameof(sum3));
+
+            //Subtracting vectors
+            Vector3D sub1 = a - b;
+            Vector3D sub2 = Vector3D.Subtract(a, b);
+            Vector3D sub3 = Vector3D.Subtract(a, (20d, 20d, -31.123d));
+            DisplayVector3D(sub1, nameof(sub1));
+            DisplayVector3D(sub2, nameof(sub2));
+            DisplayVector3D(sub3, nameof(sub3));
+
+
+            //Multiply vectors
+            Vector3D mult1 = a * b;
+            Vector3D mult2 = Vector3D.Multiply(a, b);
+            Vector3D mult3 = Vector3D.Multiply(a, -10.5d);
+            DisplayVector3D(mult1, nameof(mult1));
+            DisplayVector3D(mult2, nameof(mult2));
+            DisplayVector3D(mult3, nameof(mult3));
+
             Console.ReadLine();
         }
         public static Vector3D EnterVector3DInfo()
         {
+            Console.WriteLine("\n_________________________ENTERING VECTOR INFO_________________________");
             Console.Write("Enter X value:\n=> ");
             (double x, double y, double z) endPoint;
             while (!double.TryParse(Console.ReadLine(), out endPoint.x))
@@ -33,12 +60,13 @@ namespace LabWork_Overloading
             {
                 Console.Write("Invalid input. Try again.\n=> ");
             }
+            Console.WriteLine("_____________________________END OF INPUT_____________________________\n");
             return new Vector3D(endPoint);
         }
 
-        public static void DisplayVector3D(Vector3D vector)
+        public static void DisplayVector3D(Vector3D vector, string name)
         {
-            Console.WriteLine(vector.ToString());
+            Console.WriteLine(name + vector.ToString());
         }
     }
 }

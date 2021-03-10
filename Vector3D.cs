@@ -6,30 +6,25 @@ namespace LabWork_Overloading
 {
     public class Vector3D
     {
-        public (double X0, double Y0, double Z0) Start { get; } = (0, 0, 0);
-        public (double X, double Y, double Z) End { get; }
+        public (double X, double Y, double Z) EndPoint { get; }
 
         private Vector3D() { }
-        public Vector3D(double x, double y, double z, double x0, double y0, double z0)
+        public Vector3D(double x, double y, double z)
         {
-            End = (x, y, z);
-            Start = (x0, y0, z0);
+            EndPoint = (x, y, z);
         }
-        public Vector3D(double x, double y, double z) : this(x, y, z, 0, 0, 0) { }
-        public Vector3D((double x, double y, double z) end) : this(end.x, end.y, end.z, 0, 0, 0) { }
-        public Vector3D((double x, double y, double z) end, double x0, double y0, double z0) : this(end.x, end.y, end.z, x0, y0, z0) { }
-        public Vector3D((double x, double y, double z) end, (double x0, double y0, double z0) start) : this(end, start.x0, start.y0, start.z0) { }
+        public Vector3D((double x, double y, double z) end) : this(end.x, end.y, end.z) { }
         public override string ToString()
         {
-            return $"Vector base point: [X:{Start.X0,6:F2}, Y:{Start.Y0,6:F2}, Z:{Start.Z0,6:F2}].\nVector end point:  [X:{End.X,6:F2}, Y:{End.Y,6:F2}, Z:{End.Z,6:F2}].";
+            return $"Vector end point:  [X:{EndPoint.X,6:F2}, Y:{EndPoint.Y,6:F2}, Z:{EndPoint.Z,6:F2}].";
         }
         public static Vector3D Sum(Vector3D a, Vector3D b)
         {
             try
             {
-                return new Vector3D((a.End.X + b.End.X,
-                                     a.End.Y + b.End.Y,
-                                     a.End.Z + b.End.Z), a.Start);
+                return new Vector3D((a.EndPoint.X + b.EndPoint.X,
+                                     a.EndPoint.Y + b.EndPoint.Y,
+                                     a.EndPoint.Z + b.EndPoint.Z));
             }
             catch (OverflowException)
             {
@@ -44,9 +39,9 @@ namespace LabWork_Overloading
         {
             try
             {
-                return new Vector3D((a.End.X + values.x,
-                                     a.End.Y + values.y,
-                                     a.End.Z + values.z), a.Start);
+                return new Vector3D((a.EndPoint.X + values.x,
+                                     a.EndPoint.Y + values.y,
+                                     a.EndPoint.Z + values.z));
             }
             catch (OverflowException)
             {
@@ -61,9 +56,9 @@ namespace LabWork_Overloading
         {
             try
             {
-                return new Vector3D((a.End.X - b.End.X,
-                                     a.End.Y - b.End.Y,
-                                     a.End.Z - b.End.Z), a.Start);
+                return new Vector3D((a.EndPoint.X - b.EndPoint.X,
+                                     a.EndPoint.Y - b.EndPoint.Y,
+                                     a.EndPoint.Z - b.EndPoint.Z));
             }
             catch (OverflowException)
             {
@@ -78,9 +73,9 @@ namespace LabWork_Overloading
         {
             try
             {
-                return new Vector3D((a.End.X - values.x,
-                                     a.End.Y - values.y,
-                                     a.End.Z - values.z), a.Start);
+                return new Vector3D((a.EndPoint.X - values.x,
+                                     a.EndPoint.Y - values.y,
+                                     a.EndPoint.Z - values.z));
             }
             catch (OverflowException)
             {
@@ -95,9 +90,9 @@ namespace LabWork_Overloading
         {
             try
             {
-                return new Vector3D((a.End.X * number,
-                                     a.End.Y * number,
-                                     a.End.Z * number), a.Start);
+                return new Vector3D((a.EndPoint.X * number,
+                                     a.EndPoint.Y * number,
+                                     a.EndPoint.Z * number));
             }
             catch (OverflowException)
             {
@@ -110,9 +105,9 @@ namespace LabWork_Overloading
         }
         public static Vector3D Multiply(Vector3D a, Vector3D b)
         {
-            return new Vector3D((a.End.Y * b.End.Z - a.End.Z * b.End.Y, 
-                                 a.End.X * b.End.Z - a.End.Z * b.End.X, 
-                                 a.End.X * b.End.Y - a.End.Y * b.End.X), a.Start);
+            return new Vector3D((a.EndPoint.Y * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.Y, 
+                                 a.EndPoint.X * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.X, 
+                                 a.EndPoint.X * b.EndPoint.Y - a.EndPoint.Y * b.EndPoint.X));
         }
 
         public static Vector3D operator+(Vector3D a, Vector3D b)
