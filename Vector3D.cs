@@ -5,8 +5,6 @@ namespace LabWork_Overloading
     public class Vector3D
     {
         public (double X, double Y, double Z) EndPoint { get; }
-
-        private Vector3D() { }
         public Vector3D(double x, double y, double z)
         {
             EndPoint = (x, y, z);
@@ -50,6 +48,10 @@ namespace LabWork_Overloading
                 throw;
             }
         }
+        public static Vector3D Sum(Vector3D a, double x, double y, double z)
+        {
+            return Sum(a, (x, y, z));
+        }
         public static Vector3D Subtract(Vector3D a, Vector3D b)
         {
             try
@@ -84,7 +86,7 @@ namespace LabWork_Overloading
                 throw;
             }
         }
-        public static Vector3D Multiply(Vector3D a, double number)
+        public static Vector3D MultiplyVectors(Vector3D a, double number)
         {
             try
             {
@@ -101,11 +103,25 @@ namespace LabWork_Overloading
                 throw;
             }
         }
-        public static Vector3D Multiply(Vector3D a, Vector3D b)
+        public static Vector3D MultiplyVectors(Vector3D a, Vector3D b)
         {
             return new Vector3D((a.EndPoint.Y * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.Y, 
                                  a.EndPoint.X * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.X, 
                                  a.EndPoint.X * b.EndPoint.Y - a.EndPoint.Y * b.EndPoint.X));
+        }
+        public static double ScalarMultiplication(Vector3D a, Vector3D b)
+        {
+            return a.EndPoint.X * b.EndPoint.X + a.EndPoint.Y * b.EndPoint.Y + a.EndPoint.Z * b.EndPoint.Z;
+        }
+
+        public static double ScalarMultiplication(Vector3D a, double x, double y, double z)
+        {
+            return ScalarMultiplication(a, new Vector3D(x, y, z));
+        }
+
+        public static double ScalarMultiplication(Vector3D a, (double x, double y, double z) values)
+        {
+            return ScalarMultiplication(a, new Vector3D(values));
         }
 
         public static Vector3D operator+(Vector3D a, Vector3D b)
@@ -126,11 +142,11 @@ namespace LabWork_Overloading
         }
         public static Vector3D operator*(Vector3D a, double number)
         {
-            return Multiply(a, number);
+            return MultiplyVectors(a, number);
         }
         public static Vector3D operator*(Vector3D a, Vector3D b)
         {
-            return Multiply(a, b);
+            return MultiplyVectors(a, b);
         }
     }
 }

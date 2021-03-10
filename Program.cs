@@ -18,7 +18,7 @@ namespace LabWork_Overloading
             Vector3D sum3 = Vector3D.Sum(a, (20d, 20d, -31.123d));
             DisplayVector3D(sum1, nameof(sum1));
             DisplayVector3D(sum2, nameof(sum2));
-            DisplayVector3D(sum2, nameof(sum3));
+            DisplayVector3D(sum3, nameof(sum3));
 
             //Subtract vectors
             Vector3D sub1 = a - b;
@@ -31,11 +31,13 @@ namespace LabWork_Overloading
 
             //Multiply vectors
             Vector3D mult1 = a * b;
-            Vector3D mult2 = Vector3D.Multiply(a, b);
-            Vector3D mult3 = Vector3D.Multiply(a, -10.5d);
+            Vector3D mult2 = Vector3D.MultiplyVectors(a, b);
+            Vector3D mult3 = Vector3D.MultiplyVectors(a, -10.5d);
+            double scalarResult = Vector3D.ScalarMultiplication(a, b);
             DisplayVector3D(mult1, nameof(mult1));
             DisplayVector3D(mult2, nameof(mult2));
             DisplayVector3D(mult3, nameof(mult3));
+            Console.WriteLine($"Scalar multiplication result: {scalarResult}");
 
             Console.ReadLine();
         }
