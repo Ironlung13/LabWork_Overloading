@@ -24,10 +24,12 @@ namespace LabWork_Overloading
             }
             catch (OverflowException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
             catch (ArgumentNullException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
         }
@@ -41,10 +43,12 @@ namespace LabWork_Overloading
             }
             catch (OverflowException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
             catch (ArgumentNullException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
         }
@@ -62,10 +66,12 @@ namespace LabWork_Overloading
             }
             catch (OverflowException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
             catch (ArgumentNullException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
         }
@@ -79,10 +85,12 @@ namespace LabWork_Overloading
             }
             catch (OverflowException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
             catch (ArgumentNullException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
         }
@@ -96,22 +104,50 @@ namespace LabWork_Overloading
             }
             catch (OverflowException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
             catch (ArgumentNullException)
             {
+                //Здесь должен был быть код обработки исключений
                 throw;
             }
         }
         public static Vector3D MultiplyVectors(Vector3D a, Vector3D b)
         {
-            return new Vector3D((a.EndPoint.Y * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.Y, 
-                                 a.EndPoint.X * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.X, 
-                                 a.EndPoint.X * b.EndPoint.Y - a.EndPoint.Y * b.EndPoint.X));
+            try
+            {
+                return new Vector3D((a.EndPoint.Y * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.Y,
+                                         a.EndPoint.X * b.EndPoint.Z - a.EndPoint.Z * b.EndPoint.X,
+                                         a.EndPoint.X * b.EndPoint.Y - a.EndPoint.Y * b.EndPoint.X));
+            }
+            catch (OverflowException)
+            {
+                //Здесь должен был быть код обработки исключений
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                //Здесь должен был быть код обработки исключений
+                throw;
+            }
         }
         public static double ScalarMultiplication(Vector3D a, Vector3D b)
         {
-            return a.EndPoint.X * b.EndPoint.X + a.EndPoint.Y * b.EndPoint.Y + a.EndPoint.Z * b.EndPoint.Z;
+            try
+            {
+                return a.EndPoint.X * b.EndPoint.X + a.EndPoint.Y * b.EndPoint.Y + a.EndPoint.Z * b.EndPoint.Z;
+            }
+            catch (OverflowException)
+            {
+                //Здесь должен был быть код обработки исключений
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                //Здесь должен был быть код обработки исключений
+                throw;
+            }
         }
 
         public static double ScalarMultiplication(Vector3D a, double x, double y, double z)
