@@ -12,7 +12,7 @@ namespace LabWork_Overloading
             DisplayVector3D(a, nameof(a));
             DisplayVector3D(b, nameof(b));
 
-            //Summing vectors
+            //Sum vectors
             Vector3D sum1 = a + b;
             Vector3D sum2 = Vector3D.Sum(a, b);
             Vector3D sum3 = Vector3D.Sum(a, (20d, 20d, -31.123d));
@@ -20,7 +20,7 @@ namespace LabWork_Overloading
             DisplayVector3D(sum2, nameof(sum2));
             DisplayVector3D(sum2, nameof(sum3));
 
-            //Subtracting vectors
+            //Subtract vectors
             Vector3D sub1 = a - b;
             Vector3D sub2 = Vector3D.Subtract(a, b);
             Vector3D sub3 = Vector3D.Subtract(a, (20d, 20d, -31.123d));
@@ -66,7 +66,7 @@ namespace LabWork_Overloading
 
         public static void DisplayVector3D(Vector3D vector, string name)
         {
-            Console.WriteLine(name + vector.ToString());
+            Console.WriteLine($"[{name}] {vector}");
         }
     }
 }
